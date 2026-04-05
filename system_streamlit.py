@@ -15,7 +15,7 @@ with zipfile.ZipFile("Books.zip", "r") as z:
 data = pd.read_csv("books_data/Books.csv", low_memory=False)
 
 #data cleaning
-data = data.drop_duplicates('Book-Title').reset_index(drop=True)
+data.drop('Year-Of-Publication', axis=1, inplace=True)
 data.dropna(inplace=True)
 data['Year-Of-Publication'] = data['Year-Of-Publication'].astype(int)
 # feature engineering
