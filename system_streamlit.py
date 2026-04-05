@@ -18,6 +18,7 @@ data = pd.read_csv("books_data/Books.csv", low_memory=False)
 data.drop(columns='Year-Of-Publication', inplace=True)
 
 
+
 data.dropna(inplace=True)
 
 # feature engineering
