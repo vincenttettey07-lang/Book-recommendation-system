@@ -20,7 +20,6 @@ data.dropna(inplace=True)
 
 # feature engineering
 data['Combined_features'] = data['Book-Title']+ " " + data['Book-Author']+ " " + data['Publisher']
-data.drop(columns = 'Year-Of-Publication', axis=1, inplace = True)
 model_df = data[['Book-Title', 'Book-Author', 'Publisher','Combined_features']]
 display_df = data[['ISBN','Book-Title','Book-Author','Image-URL-M']]
 tfidf = TfidfVectorizer(stop_words='english')
