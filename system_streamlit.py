@@ -196,7 +196,7 @@ if st.button("Recommend"):
                 st.write(row['Book-Title'])
 
 except Exception:
-    st.error("😮Book not found)
+    st.error("😮Book not found")
 
 
 
