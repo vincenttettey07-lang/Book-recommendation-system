@@ -196,9 +196,12 @@ if st.button("Recommend"):
                     st.image(row['Image-URL-M'])
                     st.write(row['Book-Title'])
 
-   except Exception as e:
-        st.error("⚠️ Something went wrong. Please enter a new book.")
+    except Exception:
+        st.warning("Book not Found")
 
+                        
+
+            
 
 
     
