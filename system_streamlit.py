@@ -7,7 +7,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import difflib
 # load the data
-data = pd.read_csv("Books.zip", low_memory = False)
+data = pd.read_csv("Books.zip", compression="zip", low_memory=False)
 #data cleaning
 data = data.drop_duplicates('Book-Title').reset_index(drop=True)
 data.dropna(inplace=True)
