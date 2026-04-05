@@ -144,14 +144,14 @@ book = st.text_input("📝Enter book title")
 st.markdown('---')
 if st.button("Recommend"):
     match = difflib.get_close_matches(book, titles, n=1, cutoff=0.6)
-    results = recommend(book)
+    results = recommend(match[0])
     if results is None:
         st.error("😮Book not found!")
     elif not match:
         st.warning("😮Book not found")
     elif len(book)== 0:
         st.warning("📝Enter Book Title")
-    elif len(results[0]) == 0:
+    elif len(results) == 0:
         st.warning("📝Enter Book Title")
     else:
         data['Book-Title'] = data['Book-Title'].str.lower()
