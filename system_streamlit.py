@@ -17,7 +17,7 @@ data = pd.read_csv("books_data/Books.csv", low_memory=False)
 #data cleaning
 data.drop('Year-Of-Publication', axis=1, inplace=True)
 data.dropna(inplace=True)
-data['Year-Of-Publication'] = data['Year-Of-Publication'].astype(int)
+
 # feature engineering
 data['Combined_features'] = data['Book-Title']+ " " + data['Book-Author']+ " " + data['Publisher']
 data.drop(columns = 'Year-Of-Publication', axis=1, inplace = True)
