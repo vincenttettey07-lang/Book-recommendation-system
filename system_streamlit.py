@@ -187,12 +187,12 @@ if st.button("Recommend"):
                 st.markdown("---")
                 st.subheader('✨ Recommended Books')
                 
-                        cols = st.columns(5)
+                cols = st.columns(5)
             
-                    for i,(_, row) in enumerate(results.iterrows()):
-                        with cols[i]:
-                            st.image(row['Image-URL-M'])
-                            st.write(row['Book-Title'])
+                for i,(_, row) in enumerate(results.iterrows()):
+                    with cols[i]:
+                        st.image(row['Image-URL-M'])
+                        st.write(row['Book-Title'])
     
     
     
