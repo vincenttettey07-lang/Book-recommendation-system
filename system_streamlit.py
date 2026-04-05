@@ -144,7 +144,7 @@ book = st.text_input("📝Enter book title")
 st.markdown('---')
 if st.button("Recommend"):
     match = difflib.get_close_matches(book, titles, n=1, cutoff=0.6)
-    results = recommend(match[0])
+    results = recommend(book)
     if results is None:
         st.error("😮Book not found!")
     elif not match:
@@ -163,7 +163,7 @@ if st.button("Recommend"):
         # Find closest match
         match = difflib.get_close_matches(book_title, titles, n=1, cutoff=0.6)
         if not match:
-           print("Book not found")
+           st.warning("😮Book not found")
         
     
         matched_title = match[0]
