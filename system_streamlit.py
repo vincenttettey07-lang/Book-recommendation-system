@@ -16,6 +16,7 @@ data = pd.read_csv("books_data/Books.csv", low_memory=False)
 
 #data cleaning
 
+data.drop('Year-Of-Publication', axis=1, inplace=True)
 
 
 
