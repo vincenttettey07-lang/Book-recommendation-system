@@ -15,7 +15,7 @@ with zipfile.ZipFile("Books.zip", "r") as z:
 data = pd.read_csv("books_data/Books.csv", low_memory=False)
 
 #data cleaning
-data.drop(columns='Year-Of-Publication', inplace=True, errors='ignore')
+
 
 
 
