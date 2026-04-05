@@ -161,33 +161,33 @@ if st.button("Recommend"):
             
             # Find closest match
             match = difflib.get_close_matches(book_title, titles, n=1, cutoff=0.6)
-        if not match:
-           print("Book not found")
-        
-        
-            matched_title = match[0]
-            idx = data_clean[data_clean['Book-Title'] == matched_title].index[0]
-        
-            # Compute similarity scores
-            similarity_scores = cosine_similarity(tfidf_matrix[idx], tfidf_matrix).flatten()
+            if not match:
+               st.warning("😮Book not found")
             
-            # Enumerate and filter out the matched book itself
-            scores = [(i, score) for i, score in enumerate(similarity_scores)]
+            else:
+                matched_title = match[0]
+                idx = data_clean[data_clean['Book-Title'] == matched_title].index[0]
             
-            # Sort and take top 5
-            sorted_scores = sorted(scores, key=lambda x: x[1], reverse=True)[0:1]
-            book_indices = [i[0] for i in sorted_scores]
-            
-            # Format titles for display
-            data_clean['Book-Title'] = data_clean['Book-Title'].str.title()
-            actual_book = data_clean.iloc[book_indices][['Book-Title', 'Image-URL-M']]
-            st.subheader("🎯 Matched Book")
-            st.image(actual_book['Image-URL-M'].iloc[0])
-            st.write(actual_book['Book-Title'].iloc[0])
-            st.markdown("---")
-            st.subheader('✨ Recommended Books')
-            
-                    cols = st.columns(5)
+                # Compute similarity scores
+                similarity_scores = cosine_similarity(tfidf_matrix[idx], tfidf_matrix).flatten()
+                
+                # Enumerate and filter out the matched book itself
+                scores = [(i, score) for i, score in enumerate(similarity_scores)]
+                
+                # Sort and take top 5
+                sorted_scores = sorted(scores, key=lambda x: x[1], reverse=True)[0:1]
+                book_indices = [i[0] for i in sorted_scores]
+                
+                # Format titles for display
+                data_clean['Book-Title'] = data_clean['Book-Title'].str.title()
+                actual_book = data_clean.iloc[book_indices][['Book-Title', 'Image-URL-M']]
+                st.subheader("🎯 Matched Book")
+                st.image(actual_book['Image-URL-M'].iloc[0])
+                st.write(actual_book['Book-Title'].iloc[0])
+                st.markdown("---")
+                st.subheader('✨ Recommended Books')
+                
+                        cols = st.columns(5)
             
                     for i,(_, row) in enumerate(results.iterrows()):
                         with cols[i]:
